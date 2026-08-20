@@ -9,9 +9,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("public"));
-
 const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("My Week 2 API!");
+});
+
+app.get("/page", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.post("/user", (req, res) => {
   const { name, email } = req.body;
